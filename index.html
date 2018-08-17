@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="js/angular1.7.2.js"></script>
+    <link href="css/default.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/chartfun.js"></script>
+    <script src="js/control.js"></script>
+</head>
+
+<body>
+    <div ng-app="demoapp" class="container-fluid" style="padding:0">
+        <div ng-controller="democontroller">
+
+            <div class="tab-class" style=" height: 130px;">
+                <p class="text-class" style="margin-top: 30px;font-size: 50px;">
+                    ACCOUNT ID :
+                    <span style="float:right; margin-right: 10px;">52000140129
+                    </span>
+
+                </p>
+            </div>
+
+            <div class="tab-class" style=" height: 80px;">
+                <p class="text-class" style="margin-top: 10px;font-size: 40px;">
+                    NET BALANCE :
+                    <span style="float:right; margin-right: 10px;">
+                        <!--Retrieve balance here-->
+                    </span>
+                </p>
+            </div>
+
+            <br>
+
+            <table style="margin-top: 0px">
+
+                <tr>
+                    <td style="width: 75%;">
+
+                        <h1>Transactions</h1>
+                        <table class="table table-striped" style="font-size:75%;position:relative;margin-top: 5px">
+                            <tr>
+                                <th>Transaction Id</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr ng-repeat="item in data" ng-if="item.account_id==52000140129">
+                                <td>{{item.transaction_id}}</td>
+                                <td>{{item.transaction_date}}</td>
+                                <td>{{item.transaction_type}}</td>
+                                <td>{{item.transaction_amount}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <div class="chart-container">
+                            <br>
+                            <br>
+                            <div class="pie-chart-container">
+                                <canvas id="pie-chartcanvas-1"></canvas>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <b>
+                            <center>
+                                <p style="font-size: 20px;">Total credit: {{creditval}}</p>
+                                <p style="font-size: 20px;">Total debit: {{debitval}}</p>
+                            </center>
+                        </b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
